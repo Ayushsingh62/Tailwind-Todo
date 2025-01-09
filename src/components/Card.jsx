@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
-const Card = ({ todo, deleteTodo, editTodo }) => {
+import TodoContext from '../context/TodoContext';
+const Card = ({todo}) => {
   // console.log(todo)
+
+  const { deleteTodo, editTodo}=useContext(TodoContext)
   return (
-    <div>
-      <div className='my-5  grid grid-cols-1 md:grid-cols-4 gap-4 '>
+    <div   >
+      <div  >
 
         <div className=' border p-5 rounded-md  shadow-sm relative' >
           <h1 className='text-2xl font-bold '>{todo.title}</h1>

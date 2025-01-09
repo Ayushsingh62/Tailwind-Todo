@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import TodoContext from '../context/TodoContext'
 
-const Form = ({ addTodo, edit, updateTodo }) => {
+
+const Form = () => {
+
+  const {addTodo , edit , updateTodo}=useContext(TodoContext)
   const [title, setTitle] = useState("")
   const [description, setDecription] = useState("")
 
@@ -21,15 +25,17 @@ const Form = ({ addTodo, edit, updateTodo }) => {
   }
 
   useEffect(() => {
-    setTitle(edit.todo.title)
-    setDecription(edit.todo.description)
+    setTitle(edit?.todo.title)
+    setDecription(edit?.todo.description)
 
 
   }, [edit])
 
   return (
     <div>
-      <form onSubmit={handleSubmit} >
+      <form 
+      onSubmit={handleSubmit} 
+      >
 
 
         <input type="text" placeholder='Enter text' p className='border border-gray-400 p-2 w-full focus:outline-indigo-600 rounded-md m-2 placeholder-text-sm'
