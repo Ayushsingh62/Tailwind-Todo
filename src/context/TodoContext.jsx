@@ -6,12 +6,7 @@ const TodoContext = createContext()
 export const TodoProvider = ({ children }) => {
    
      const [todos, setTodos] = useState([
-      //  {
-      //    id: 1,
-      //    title: "Title",
-      //    description: "some description"
-   
-      //  },
+       
        
       //  {
       //    id: 2,
