@@ -4,22 +4,40 @@ import TodoContext from '../context/TodoContext'
 
 const Form = () => {
 
-  const {addTodo , edit , updateTodo}=useContext(TodoContext)
+
+
+  const {dispatch , edit }=useContext(TodoContext)
+
+  console.log(edit)
+  const {addTodo , updateTodo}=useContext(TodoContext)
   const [title, setTitle] = useState("")
   const [description, setDecription] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (edit.isEdit === false) {
-      addTodo(title, description)
+!edit.isEdit ?
+
+dispatch({  
+type :"ADD_TODO",
+payload:{id:crypto.randomUUID(), title , description}
+
+}) :
+dispatch({  
+  type :"UPDATE_TODO",
+  payload:{id: edit.todo.id, title , description}
+  
+  })
+
+    // if (edit.isEdit === false) {
+    //   addTodo(title, description)
 
 
-    }
-    else {
-      console.log(edit)
-      updateTodo(edit.todo.id, title, description)
-    } 
+    // }
+    // else {
+    //   console.log(edit)
+    //   updateTodo(edit.todo.id, title, description)
+    // } 
     setTitle("")
     setDecription("")
   }
